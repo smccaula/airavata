@@ -1,0 +1,6 @@
+analyseLocally=false
+eclipse.preferences.version=1
+extraProperties=
+projectKey=org.apache.airavata\:app-catalog-data
+serverUrl=http\://localhost\:9000
+version=2
