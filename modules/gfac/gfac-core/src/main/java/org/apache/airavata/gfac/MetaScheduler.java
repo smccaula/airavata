@@ -21,12 +21,33 @@
 
 package org.apache.airavata.gfac.bes.utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
+
+import org.apache.airavata.client.api.AiravataAPI;
+import org.apache.airavata.client.api.exception.AiravataAPIInvocationException;
+import org.apache.airavata.commons.gfac.type.ApplicationDescription;
+import org.apache.airavata.commons.gfac.type.HostDescription;
 import org.apache.airavata.gfac.core.context.JobExecutionContext;
-
+import org.apache.airavata.gfac.core.provider.GFacProvider;
+import org.apache.airavata.gfac.core.provider.GFacProviderConfig;
+import org.apache.airavata.gfac.core.provider.GFacProviderException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 public class MetaScheduler {
-	
+	private static Logger log = LoggerFactory.getLogger(MetaScheduler.class);
 	
 	public static String getUserNameFromContext(JobExecutionContext jobContext) {
 		if(jobContext.getTaskData() == null)
