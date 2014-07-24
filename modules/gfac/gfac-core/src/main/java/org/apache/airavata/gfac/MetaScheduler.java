@@ -19,7 +19,7 @@
  *
  */
 
-package org.apache.airavata.gfac.bes.utils;
+package org.apache.airavata.gfac;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +55,17 @@ public class MetaScheduler {
 		//FIXME: Discuss to get user and change this
 		return "admin";
 	}
+	
+    public static HostDescription pickaHost(AiravataAPI api, String serviceName) throws AiravataAPIInvocationException {
+        List<HostDescription> registeredHosts = new ArrayList<HostDescription>();
+        Map<String, ApplicationDescription> applicationDescriptors = api.getApplicationManager().getApplicationDescriptors(serviceName);
+        for (String hostDescName : applicationDescriptors.keySet()) {
+            registeredHosts.add(api.getApplicationManager().getHostDescription(hostDescName));
+        }
+        return scheduleHost(registeredHosts);
+    }
+	
+}
 
 
 	
