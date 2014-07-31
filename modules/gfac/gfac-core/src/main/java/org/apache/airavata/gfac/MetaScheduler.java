@@ -49,6 +49,14 @@ import org.xml.sax.SAXException;
 public class MetaScheduler {
 	private static Logger log = LoggerFactory.getLogger(MetaScheduler.class);
 	
+	public String getHostName() {
+		return hostName;
+	}
+	
+	public String getQueueName() {
+		return queueName;
+	}
+	
 	public static String getUserNameFromContext(JobExecutionContext jobContext) {
 		if(jobContext.getTaskData() == null)
 			return null;
@@ -65,6 +73,30 @@ public class MetaScheduler {
         return scheduleHost(registeredHosts);
     }
 	
+    // what exception should this throw?
+    
+    public boolean submitThrottle(String experimentID, String taskID) throws OrchestratorException {
+        return this.submitThrottle(experimentID, taskID, null);
+    }
+    
+    // get array of jobs from orchestrator (should be able to find the layout)
+    // jobs have a state characteristic
+    
+    // implement listeners?
+    
+    
+    
+    // need to maintain new database of queued job data
+    
+    // need a launchJob() like in Orchestrator
+    
+    // need a launchThrottleJob() for Orchestrator to call
+    
+    // for testing... assume calls and required data
+    
+    // right now... look for launchJob, queue data, db access
+    
+    
 }
 
 
