@@ -35,12 +35,16 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.apache.airavata.client.api.AiravataAPI;
 import org.apache.airavata.client.api.exception.AiravataAPIInvocationException;
+import org.apache.airavata.common.utils.AiravataUtils;
+import org.apache.airavata.common.utils.StringUtil;
+import org.apache.airavata.common.utils.StringUtil.CommandLineParameters;
 import org.apache.airavata.commons.gfac.type.ApplicationDescription;
 import org.apache.airavata.commons.gfac.type.HostDescription;
 import org.apache.airavata.gfac.core.context.JobExecutionContext;
 import org.apache.airavata.gfac.core.provider.GFacProvider;
 import org.apache.airavata.gfac.core.provider.GFacProviderConfig;
 import org.apache.airavata.gfac.core.provider.GFacProviderException;
+import org.apache.commons.cli.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -48,6 +52,17 @@ import org.xml.sax.SAXException;
 
 public class MetaScheduler {
 	private static Logger log = LoggerFactory.getLogger(MetaScheduler.class);
+	
+	
+	public static void main(String args[]) {
+        try {
+        	System.out.println("API version is " + client.getAPIVersion());
+        } catch (Exception e) {
+            logger.error("Error while connecting with server", e.getMessage());
+            e.printStackTrace();
+        }
+	}
+	
 	
 	public String getHostName() {
 		return hostName;
